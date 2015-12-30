@@ -87,3 +87,43 @@ Use npm scripts. For example, in `package.json`:
 ```
 
 Then run `npm start`.
+
+## Production vs Dev builds
+
+For production, want minimized code, but not dev. Might also want to strip out console logs for production.
+
+To mimimize and uglify code, just add `-p` flag:
+
+```
+// package.json
+"scripts": {
+  "start": "webpack-dev-server --inline --watch",
+  "prod": "webpack -p"
+}
+
+$ npm run prod
+```
+
+It's also possible to use a different config file for the production build.
+For example, to strip out certain kinds of code, first install:
+
+```shell
+npm install strip-loader --save-dev
+```
+
+Create `webpack-production.config.js`. This file can extend the base config,
+[example](lesson-03/webpack-production.config.js).
+
+Configure strip loader by providing a comma separated list strings to be filtered out, for example `console.log`.
+
+To use the production config:
+
+```
+// package.json
+"scripts": {
+  "start": "webpack-dev-server --inline --watch",
+  "prod": "webpack --config webpack-production.config.js -p"
+}
+
+$ npm run prod
+```
