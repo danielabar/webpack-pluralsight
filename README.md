@@ -90,6 +90,8 @@ Then run `npm start`.
 
 ## Production vs Dev builds
 
+See lesson-03 folder.
+
 For production, want minimized code, but not dev. Might also want to strip out console logs for production.
 
 To mimimize and uglify code, just add `-p` flag:
@@ -127,3 +129,12 @@ To use the production config:
 
 $ npm run prod
 ```
+
+## Project Organization
+
+See lesson-04 folder. A more realistic project organization.
+
+Using output paths and devServer config as in [this example](lesson-04/webpack.config.js),
+`bundle.js` file is not actually produced on disk, it's served up virtually by web server.
+
+Note production build is now broken, [issue](https://github.com/joeeames/WebpackFundamentalsCourse/issues/3)
