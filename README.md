@@ -3,6 +3,7 @@
 > Learning Webpack with Pluralsight [course](https://app.pluralsight.com/library/courses/webpack-fundamentals/table-of-contents)
 
 Replaces task runners such as Grunt and Gulp. And is also a module loader.
+Can load any module format such as AMD, CommonJS, ES6 modules.
 
 Can also bundle css into the final bundle.js.
 
@@ -17,6 +18,8 @@ npm install -g webpack
 With `webpack.config.js` file in place, just need to enter `webpack` at command line to run build.
 
 Config file is a CommonJS module. Important keys are `entry` and `output`.
+
+Note that `entry` can contain a list of files.
 
 ## Watch
 
