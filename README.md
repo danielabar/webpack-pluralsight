@@ -60,3 +60,15 @@ webpack-dev-server --inline
 ```
 
 Then go to [http://localhost:8080](http://localhost:8080)
+
+## Loaders
+
+To teach Webpack "new tricks". Loaders process files and can transform them into something else.
+
+Add `module... loaders` section to webpack config.
+
+`resolve` specifies what kind of files can be loaded without having to specify their extensions.
+
+For example, using Babel for ES6 to ES5 transpiling, see [lesson-03/webpack.config.js](lesson-03/webpack.config.js)
+
+For linting, JSHint uses a _pre-loader_. Preloaders run before the loaders do.

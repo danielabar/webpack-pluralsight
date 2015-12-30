@@ -1,0 +1,23 @@
+{
+  "name": "webpack-pluralsight-lesson-03",
+  "version": "1.0.0",
+  "description": "Learning Webpack loaders with Pluralsight",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "danielabar",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "jshint": "^2.8.0",
+    "jshint-loader": "^0.8.3",
+    "node-libs-browser": "^0.5.3",
+    "webpack": "^1.12.9"
+  }
+}
