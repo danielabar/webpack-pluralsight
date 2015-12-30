@@ -2,8 +2,11 @@
 
 > Learning Webpack with Pluralsight [course](https://app.pluralsight.com/library/courses/webpack-fundamentals/table-of-contents)
 
-Replaces task runners such as Grunt and Gulp. And is also a module loader.
+Replaces task runners such as Grunt and Gulp.
+And is also a module loader, replaces RequireJS and Browserify.
 Can load any module format such as AMD, CommonJS, ES6 modules.
+
+Uses npm to manage all dependencies, not Bower.
 
 Can also bundle css into the final bundle.js.
 
@@ -72,3 +75,15 @@ Add `module... loaders` section to webpack config.
 For example, using Babel for ES6 to ES5 transpiling, see [lesson-03/webpack.config.js](lesson-03/webpack.config.js)
 
 For linting, JSHint uses a _pre-loader_. Preloaders run before the loaders do.
+
+## Running individual tasks
+
+Use npm scripts. For example, in `package.json`:
+
+```
+"scripts": {
+  "start": "webpack-dev-server --inline"
+}
+```
+
+Then run `npm start`.
