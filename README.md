@@ -255,3 +255,14 @@ To actually bring in the css into the project, add a `require` statement to the 
 require('../css/bootstrap.css');
 require('../css/app.css');
 ```
+
+### How CSS loading works
+
+Note that in the Network tab, no request for css files occur.
+But looking at generated index.html, note two style tags inserted in `<head>` section.
+
+One is the bootstrap css inlined, the other is the custom app.css, again inlined.
+
+The Webpack CSS and Style loaders create `<style>` tags in the html head and embed all the style information.
+
+When webpack is run in production mode (-p flag), the embedded css will be minified.
