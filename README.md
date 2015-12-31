@@ -207,3 +207,51 @@ output: {
   filename: '[name].js'               // no longer 'bundle.js', now it varies by entry name
 }
 ```
+
+## CSS & Style Loaders
+
+See lesson-06 folder.
+
+CSS can be used without referencing it as a link in the html. Start by installing the loaders:
+
+```shell
+npm install css-loader stye-loader --save-dev
+```
+
+These two loaders work together to put the styles into the page. Configuration:
+
+```javascript
+loaders: [
+  {
+    test: /\.css$/,
+    exclude: /node_modules/,
+    loader: 'style-loader!css-loader'   // first run css files through css-loader, then style-loader
+  }
+]
+```
+
+`!` is Webpack syntax for chaining loaders. Files will be processed from right-most to left.
+
+For bootstrap fonts, also need to install additional webpack loaders:
+
+```shell
+npm install file-loader url-loader --save-dev
+```
+
+Then configure loaders for the font files and urls, in the `loaders` section:
+
+```javascript
+// the url-loader uses DataUrls.
+// the file-loader emits files.
+{test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+{test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
+{test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+{test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
+```
+
+To actually bring in the css into the project, add a `require` statement to the entrypoint js file:
+
+```javascript
+require('../css/bootstrap.css');
+require('../css/app.css');
+```
