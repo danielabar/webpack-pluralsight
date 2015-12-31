@@ -136,3 +136,13 @@ See lesson-04 folder. A more realistic project organization.
 
 Using output paths and devServer config as in [this example](lesson-04/webpack.config.js),
 `bundle.js` file is not actually produced on disk, it's served up virtually by web server.
+
+## Working with ES6 Modules
+
+See lesson-05 folder.
+
+To work with ES6 modules, configure Babel to process the es6 files, and convert to CommonJS syntax,
+so that Webpack can understand it.
+
+See [lesson-05/js/login.es6](lesson-05/js/login.es6) and [lesson-05/js/app.es6](lesson-05/js/app.es6)
+for example of exporting a function from a module and using it in another.
