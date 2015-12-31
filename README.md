@@ -94,7 +94,7 @@ See lesson-03 folder.
 
 For production, want minimized code, but not dev. Might also want to strip out console logs for production.
 
-To mimimize and uglify code, just add `-p` flag:
+To mimimize and uglify code, these features are already built into Webpack, just add `-p` flag:
 
 ```
 // package.json
@@ -146,3 +146,25 @@ so that Webpack can understand it.
 
 See [lesson-05/js/login.es6](lesson-05/js/login.es6) and [lesson-05/js/app.es6](lesson-05/js/app.es6)
 for example of exporting a function from a module and using it in another.
+
+## Sourcemaps
+
+Continuing with lesson-05 folder.
+
+Easy to add because its built into Webpack. Just add "-d" flag:
+
+```shell
+webpack -d
+```
+
+Now you can debug into the es6 source files separately, even though they're all in one bundle.js file.
+
+Can also use source maps in production build:
+
+```
+// package.json
+"scripts": {
+  "start": "webpack-dev-server --inline --watch -d",
+  "prod": "webpack --config webpack-production.config.js -p -d"
+}
+```

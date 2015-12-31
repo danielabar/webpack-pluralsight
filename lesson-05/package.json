@@ -4,8 +4,8 @@
   "description": "Learning Webpack loaders with Pluralsight",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --watch",
-    "prod": "webpack --config webpack-production.config.js -p"
+    "start": "webpack-dev-server --inline --watch -d",
+    "prod": "webpack --config webpack-production.config.js -p -d"
   },
   "keywords": [
     "webpack"
