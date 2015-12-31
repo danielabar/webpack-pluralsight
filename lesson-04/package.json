@@ -1,5 +1,5 @@
 {
-  "name": "webpack-pluralsight-lesson-03",
+  "name": "webpack-pluralsight-lesson-04",
   "version": "1.0.0",
   "description": "Learning Webpack loaders with Pluralsight",
   "main": "app.js",

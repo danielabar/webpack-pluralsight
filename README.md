@@ -168,3 +168,42 @@ Can also use source maps in production build:
   "prod": "webpack --config webpack-production.config.js -p -d"
 }
 ```
+
+## Multiple Bundles
+
+See lesson-06 folder. [lesson-06/webpack.config.js](lesson-06/webpack.config.js)
+
+Useful for lazy loading. For example, if have different html files needing different js code.
+
+Webpack adds some code into the bundle that it needs, don't want to duplicate this for multiple bundles,
+pull it out to a shared file.
+
+To extract shared common webpack code, add to config:
+
+```javascript
+var webpack = require('webpack');
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('shared.js');
+
+module.exports = {
+
+  plugins: [commonsPlugin],
+
+  // ...
+}
+```
+
+Make `entry` an object instead of array, and `output.filename` is now parameterized with `[name]`:
+
+```javascript
+entry: {
+  about: './about_page.js',
+  home: './home_page.js',
+  contact: './contact_page.js'
+},
+
+output: {
+  path: path.resolve('build/js/'),    // directory where bundle will go
+  publicPath: '/public/assets/js/',   // where dev server will serve bundle from
+  filename: '[name].js'               // no longer 'bundle.js', now it varies by entry name
+}
+```
