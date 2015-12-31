@@ -129,6 +129,13 @@ To use the production config:
 
 $ npm run prod
 ```
+Now can use any web server such as `http-server` or nginx etc to serve the optimized build.
+
+Can also use the webpack dev server to serve the optimzed build as follows:
+
+```shell
+webpack-dev-server -p
+```
 
 ## Project Organization
 

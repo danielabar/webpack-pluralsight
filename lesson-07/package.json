@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "webpack-dev-server --inline --watch -d",
-    "prod": "webpack --config webpack-production.config.js -p -d"
+    "serve-prod": "webpack-dev-server -p",
+    "build-prod": "webpack --config webpack-production.config.js -p -d"
   },
   "keywords": [
     "webpack"
