@@ -1,5 +1,5 @@
 require('./login');
 
-document.write('Welcome to Big Hair Concerts!! ignoring jshint error here');
+document.write('Welcome to Big Hair Concerts!!');
 
 console.log('App loaded');
