@@ -225,7 +225,11 @@ CSS can be used without referencing it as a link in the html. Start by installin
 npm install css-loader stye-loader --save-dev
 ```
 
-These two loaders work together to put the styles into the page. Configuration:
+These two loaders work together to put the styles into the page.
+The `stye-loader` embeds the css in a style tag in the head section of html document.
+The `css-loader` is used to process it.
+
+Configuration:
 
 ```javascript
 loaders: [
@@ -322,3 +326,64 @@ npm install less-loader --save-dev
 In webpack config, change `sass-loader` to `less-loader`, and change test regexp to look for less files.
 
 In app entry, require the less file, `require('../css/app.less')`
+
+### Separate CSS bundle
+
+See lesson-09 folder.
+
+To have the css loaded as a separate file, rather than embedded as style tag in document head.
+
+Start by installing a webpack plugin:
+
+```shell
+npm install extract-text-webpack-plugin --save-dev
+```
+
+In webpack config, require the plugin:
+
+```javascript
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+```
+
+Change output to not build everything to to `build/js`:
+
+```javascript
+output: {
+  path: path.resolve('build/'),      // directory where bundle will go
+  publicPath: '/public/assets/',      // where dev server will serve bundle from, matches index.html
+  filename: 'bundle.js'
+}
+```
+
+Add plugins section, and call `new` on the extract text plugin function required earlier.
+This function takes one parameter, which is the name of the generated css file.
+Note that `plugins` section is an array:
+
+```javascript
+plugins: [
+  new ExtractTextPlugin('styles.css')
+]
+```
+
+Then change css and sass or less loader plugin configuration to use the plugin function instead of a string.
+
+```javascript
+loaders: [
+  {
+    test: /\.css$/,
+    exclude: /node_modules/,
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+  },
+  {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+  }
+```
+
+Change index.html now that path to bundle js is sipmly "assets", and add link for stylesheet:
+
+```html
+<link rel="stylesheet" type="text/css" href="/public/assets/styles.css">
+...
+<script type="text/javascript" src="/public/assets/bundle.js"></script>
+```
