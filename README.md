@@ -217,7 +217,7 @@ output: {
 
 ## CSS & Style Loaders
 
-See lesson-06 folder.
+See lesson-07 folder.
 
 CSS can be used without referencing it as a link in the html. Start by installing the loaders:
 
@@ -273,3 +273,40 @@ One is the bootstrap css inlined, the other is the custom app.css, again inlined
 The Webpack CSS and Style loaders create `<style>` tags in the html head and embed all the style information.
 
 When webpack is run in production mode (-p flag), the embedded css will be minified.
+
+### SASS
+
+See lesson-08 folder.
+
+To use SASS css pre-processor with Webpack. Start with installing the loader:
+
+```shell
+npm install sass-loader --save-dev
+```
+
+Add the sass loader to config file. This configuration will run .scss files through
+first the sass-loader, then css-loader, and finally style-loader.
+
+```javascript
+{
+  test: /\.scss$/,
+  exclude: /node_modules/,
+  loader: 'style-loader!css-loader!sass-loader'
+}
+```
+
+Alternatively, for source maps, specify the loader config as follows:
+
+```javascript
+{
+  test: /\.scss$/,
+  loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+}
+```
+
+Then require the scss file from one of the js files, such as the main entry point, for example:
+
+```javascript
+// app.js
+require('../css/app.scss');
+```
