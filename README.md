@@ -1,3 +1,28 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [Webpack Fundamentals](#webpack-fundamentals)
+- [Install](#install)
+- [Config](#config)
+- [Watch](#watch)
+- [Dev Server](#dev-server)
+- [Loaders](#loaders)
+- [Running individual tasks](#running-individual-tasks)
+- [Production vs Dev builds](#production-vs-dev-builds)
+- [Project Organization](#project-organization)
+- [Working with ES6 Modules](#working-with-es6-modules)
+- [Sourcemaps](#sourcemaps)
+- [Multiple Bundles](#multiple-bundles)
+- [CSS & Style Loaders](#css-&-style-loaders)
+  - [How CSS loading works](#how-css-loading-works)
+  - [SASS](#sass)
+  - [LESS](#less)
+  - [Separate CSS bundle](#separate-css-bundle)
+  - [Integrating Auto Prefixer](#integrating-auto-prefixer)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Webpack Fundamentals
 
 > Learning Webpack with Pluralsight [course](https://app.pluralsight.com/library/courses/webpack-fundamentals/table-of-contents)
@@ -387,3 +412,15 @@ Change index.html now that path to bundle js is sipmly "assets", and add link fo
 ...
 <script type="text/javascript" src="/public/assets/bundle.js"></script>
 ```
+
+To also have source maps, configure loader as follows:
+
+```javascript
+loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
+...
+loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap')
+```
+
+### Integrating Auto Prefixer
+
+Continuing with lesson-09 folder.

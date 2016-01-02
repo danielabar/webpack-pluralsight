@@ -1,17 +1,27 @@
+$navbar-color-start: #007C0C;
+$navbar-color-end: #000C0C;
+$border-color: #384bcb;
+
 body {
   padding-top: 80px;
 }
 
 .navbar {
-  background-image: linear-gradient(to bottom,#007C0C 0,#000C0C 100%);
+  background-image: linear-gradient(to bottom,$navbar-color-start 0,$navbar-color-end 100%);
 }
 
 h1 {
   padding: 15px;
 
   border: {
-    color: red;
+    color: $border-color;
     style: solid;
-    width: 1px;
+    width: 3px;
   }
+
+  // Props requiring prefix
+  background: linear-gradient(to top, black, white);
+  display: flex;
+  transition: transform 1s;
+  border-radius: 5px;
 }

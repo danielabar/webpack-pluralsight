@@ -32,7 +32,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
       },
       // the url-loader uses DataUrls.
       // the file-loader emits files.
@@ -43,7 +43,7 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap')
       }
     ]
   },
