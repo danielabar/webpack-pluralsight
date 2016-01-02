@@ -310,3 +310,15 @@ Then require the scss file from one of the js files, such as the main entry poin
 // app.js
 require('../css/app.scss');
 ```
+
+### LESS
+
+Similar to using SASS. Install loader:
+
+```shell
+npm install less-loader --save-dev
+```
+
+In webpack config, change `sass-loader` to `less-loader`, and change test regexp to look for less files.
+
+In app entry, require the less file, `require('../css/app.less')`
