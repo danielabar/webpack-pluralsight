@@ -440,3 +440,36 @@ Then modify scss loader config to run the compiled scss results through the auto
   loader: "style-loader!css-loader!autoprefixer-loader!sass-loader"
 }
 ```
+
+## Add images and fonts to build
+
+See lesson-11 folder.
+
+The same loader can be used for both images and fonts.
+
+### Images
+
+Install the url loader, which also installs the file loader module:
+
+```shell
+npm install url-loader --save-dev
+```
+
+Now add a loader to webpack config to load the images. Note that the url-loader accepts a parameter:
+
+```javascript
+{
+  test: /\.(png|jpg)$/,
+  exclude: /node_modules/,
+  // 100K is actually too large, ideally would be ~10K
+  loader: 'url-loader?limit=100000'
+}
+```
+
+`limit` parameter means any image less than this size will be inlined as a base-64 encoded data,
+thus no additional network requests needed to load it.
+
+Any image bigger than limit will be created as a separate image and loaded as a separate request.
+Copy of image is placed in the build directory when running `webpack`.
+
+### Fonts
