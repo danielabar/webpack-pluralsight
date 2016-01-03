@@ -423,4 +423,20 @@ loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loa
 
 ### Integrating Auto Prefixer
 
-Continuing with lesson-09 folder.
+See lesson-10 folder. For this exercise, have gone back to bundling css in the js file.
+
+Install the auto prefixer loader:
+
+```shell
+npm install autoprefixer-loader --save-dev
+```
+
+Then modify scss loader config to run the compiled scss results through the autoprefix loader:
+
+```javascript
+{
+  test: /\.scss$/,
+  exclude: /node_modules/,
+  loader: "style-loader!css-loader!autoprefixer-loader!sass-loader"
+}
+```
