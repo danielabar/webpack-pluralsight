@@ -20,6 +20,12 @@
   - [LESS](#less)
   - [Separate CSS bundle](#separate-css-bundle)
   - [Integrating Auto Prefixer](#integrating-auto-prefixer)
+- [Add images and fonts to build](#add-images-and-fonts-to-build)
+  - [Images](#images)
+  - [Fonts](#fonts)
+- [Webpack Tools](#webpack-tools)
+  - [Creating a Custom Loader](#creating-a-custom-loader)
+  - [Using Plugins](#using-plugins)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -489,3 +495,58 @@ Same url loader used for loading images can also be used to load fonts, note add
 ```
 
 Limit parameter can also be used, if font file < limit, will be inlined, otherwise, will not and will be a separate request. Font files usually fairly large so not likely to be inlined.
+
+## Webpack Tools
+
+### Creating a Custom Loader
+
+See lesson-13 folder.
+
+If you need a task for which there is no existing loader, can write your own.
+
+Example - strip comments out of json files. Assume project has a `config/config.json` which is read in for configuration values, but you also want to put comments for each config key, which is not valid json.
+
+Start with `npm install json-loader --save-dev`. This is the json loader for webpack that supports loading json via `require`.
+
+`npm install strip-json-comments --save-dev` is an npm module that strips comments out of json, but its not a webpack loader. Use it in `loaders/strip.js` to make a webpack loader that strips comments out of json.
+
+### Using Plugins
+
+See lesson-14 folder.
+
+Loaders are smaller pieces that transform files. Plugins are more like grunt tasks and can operate on the entire bundle, so they can do things not possible with loaders.
+
+Example - create a global variable `$` for jQuery. Add `plugins` section to `webpack.config.js`:
+
+```javascript
+plugins: [
+  // plugin to provide global variables
+  // pass in an object where keys are aliases (global vars),
+  // and values are the value the alias points to.
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.jQuery': 'jquery'
+  })
+]
+```
+
+Example - add banner add beginning of build to indicate where it came from and timestamp. Install from npm `timestamp-webpack-plugin`.
+
+Banner functionality is built into webpack via existing plugin, but getting timestamp when webpack last ran is an additional plugin to install.
+
+Open generated `bundle.js` to verify banner added:
+
+```javascript
+plugins: [
+  // timestmap plugin creates a timestamp file for the last time webpack was run
+  // accepts object with config parameters
+  new TimestampWebpackPlugin({
+    // place file in current directory
+    path: __dirname,
+    filename: 'timestamp.json'
+  }),
+
+  new webpack.BannerPlugin('**********\nMy custom banner woo hoo!!!\n**********\n')
+]
+```

@@ -1,0 +1,15 @@
+{
+  "name": "webpack-custom-loader-demo",
+  "version": "1.0.0",
+  "description": "Webpack demo of custom loader",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server -d"
+  },
+  "devDependencies": {
+    "json-loader": "^0.5.2",
+    "node-libs-browser": "^0.5.2",
+    "strip-json-comments": "^1.0.2",
+    "webpack": "^1.9.10"
+  }
+}

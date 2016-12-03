@@ -1,0 +1,5 @@
+{
+  // look ma, awesome comments
+  // JSON normally explodes with comments
+  "app_loaded_msg": "This message loaded fron config/config.json"
+}
