@@ -1,0 +1,22 @@
+{
+  "name": "webpack-demo-fonts",
+  "version": "1.0.0",
+  "description": "Webback demo for loading fonts",
+  "main": "js/app.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --watch -d"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "danielabar",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "node-libs-browser": "^0.5.3",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9"
+  }
+}

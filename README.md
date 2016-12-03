@@ -443,11 +443,11 @@ Then modify scss loader config to run the compiled scss results through the auto
 
 ## Add images and fonts to build
 
-See lesson-11 folder.
-
 The same loader can be used for both images and fonts.
 
 ### Images
+
+See lesson-11 folder.
 
 Install the url loader, which also installs the file loader module:
 
@@ -473,3 +473,19 @@ Any image bigger than limit will be created as a separate image and loaded as a 
 Copy of image is placed in the build directory when running `webpack`.
 
 ### Fonts
+
+See lesson-12 folder.
+
+The css now has `@font-face` declared with url's pointing to font files in the `fonts` directory.
+
+Same url loader used for loading images can also be used to load fonts, note addition of font file extension to test regex in loader config:
+
+```javascript
+{
+  test: /\.(png|jpg|ttf)$/,
+  exclude: /node_modules/,
+  loader: 'url-loader?limit=1000'
+}
+```
+
+Limit parameter can also be used, if font file < limit, will be inlined, otherwise, will not and will be a separate request. Font files usually fairly large so not likely to be inlined.

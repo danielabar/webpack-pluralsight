@@ -1,0 +1,37 @@
+/* Font src urls can be loaded thanks to the url-loader */
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/Lora-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/Lora-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/Lora-Italic.ttf');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/Lora-BoldItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+body {
+  font-family: Lora, Helvetica, Arial;
+  padding-top: 80px;
+}
+
+.navbar {
+  background-image: linear-gradient(to bottom,#007C0C 0,#000C0C 100%);
+}
+
+h3 {
+  font-size: 18px;
+}
